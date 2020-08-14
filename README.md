@@ -13,53 +13,42 @@ Things you may want to cover:
 
 * Database creation
 
-## users Table
+## users_Table
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null:false|
-|mail|string|null:false,unique:true|
+|nickname|string|null:false|
+|email|string|null:false,unique:true|
 |password|text|null:false|
 
 ### Association
-- has_many :groups,though::members
-- has_many :messages
-- has_many :members
+- has_many :itemcategories,though::members
+- has_many :items
 
-## groups_Table
+
+## itemcategories_Table
 
 |Coulmn|Type|Options|
 |------|----|-------|
-|name|string|null:false|
-
-### Association
-- has_many :users,through::members
-- has_many :messages
-- has_many :members
-
-## members_Table
-
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|name|string|null:false,foreign_key: true|
 
 ### Association
 - belongs_to :user
-- belongs_to :group
+- has_many :items
 
-### messages_Table
+## items_Table
 
-|Colmn|Type|Options|
-|-----|----|-------|
-|text|text|
-|image|text|
-|group_id|integer|null:false,foreign_key:true|
-|user_id|integer|null:false,foreign_key:true|
+|Column|Type|Options|
+|------|----|-------|
+|name|integer|null: false, foreign_key: true|
+|price|integer|null: false, foreign_key: true|
+|purchase|integer|null: false, foreign_key: true|
+|stock|integer|null: false, foeign_key: true|
 
 ### Association
-- belongs_to:user
-- belomgs_to:group 
+- belongs_to :user
+- belongs_to :itemcategorie
+
 
 * Database initialization
 
