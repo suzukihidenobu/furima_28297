@@ -26,8 +26,19 @@ Things you may want to cover:
 |password|string|null:false|
 
 ### Association
+- has_many : items
+
+## items
+|Column|Type|Options|
+|------|----|-------|
+|image|text|null:false|
+|name|string|null:false|
+|price|integer|null:false|
+|stock|string|null:false|
+
+### Association
+- belongs_to : user
 - has_many : product_informations
-- has_many : comments
 
 ## product_informations
 |Colum|Type|Option|
@@ -35,14 +46,15 @@ Things you may want to cover:
 |image|text|null:false|
 |name|string|null:false|
 |category_name|string|null:false|
-|item_condition|text|null:false|
+|condition|integer|null:false|
 |delivery_burden|integer|null:false|
-|shipping_area|string|null:false|
+|shipping_area|integer|null:false|
 |shipping_days|integer|null:false|
 |price|integer|null:false|
 
 ### Association
-- belongs_to :user
+- belongs_to : item
+
 
 ## comments
 |Colum|Type|Option|
@@ -51,21 +63,21 @@ Things you may want to cover:
 
 ### Association
 - belomgs_to : usr
-- has_many : purchase_confirmations
+- has_many : address
 
 
-## purchase_confirmations
+## address
 |Colum|Type|Option|
 |-----|----|------|
-|postal code|integer|null:false|
-|prefectures|string|null:false|
+|postal_code|string|null:false|
+|prefectures|integr|null:false|
 |city|string|null:false|
 |address|string|null:false|
 |building_name|text|null:false|
-|phone|string|null:false|
+|phone|integer|null:false|
 
 ### Association
-
+- belomgs_to : comment
 
 
 * Database initialization
