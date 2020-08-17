@@ -27,6 +27,18 @@ Things you may want to cover:
 
 ### Association
 - has_many : items
+- has_many : purchases
+
+## purchases
+|Colum|Type|Option|
+|-----|----|------|
+|user_id|string|null : false|
+|item_id|string|null : false|
+
+### Association
+- belomgs_to : usr
+- has_many : address
+- has_many : items
 
 ## items
 |Column|Type|Options|
@@ -43,19 +55,7 @@ Things you may want to cover:
 
 ### Association
 - belongs_to : user
-- has_many : product_informations
-- has_many : addres
-
-
-## Purchase
-|Colum|Type|Option|
-|-----|----|------|
-|coment|text|null : false|
-|user_id|string|null : false|
-|item_id|string|null : false|
-
-### Association
-- belomgs_to : usr
+- belongs_to : purchase
 - has_many : address
 
 
@@ -70,8 +70,8 @@ Things you may want to cover:
 |phone|string|null:false|
 
 ### Association
-- belomgs_to : Purchase
-- belomgs_to : product_informations
+- belomgs_to : purchase
+- belomgs_to : item
 
 
 * Database initialization
