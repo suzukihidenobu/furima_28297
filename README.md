@@ -34,10 +34,11 @@ Things you may want to cover:
 |-----|----|------|
 |user_id|string|null : false|
 |item_id|string|null : false|
+|stock|string|null:false|
 
 ### Association
-- belomgs_to : usr
-- has_many : address
+- belomgs_to : user
+- has_many : addresses
 - has_many : items
 
 ## items
@@ -46,7 +47,6 @@ Things you may want to cover:
 |image|text|null:false|
 |name|string|null:false|
 |price|integer|null:false|
-|stock|string|null:false|
 |category_name|integer|null:false|
 |condition|integer|null:false|
 |delivery_burden|integer|null:false|
@@ -56,10 +56,10 @@ Things you may want to cover:
 ### Association
 - belongs_to : user
 - belongs_to : purchase
-- has_many : address
 
 
-## address
+
+## addresses
 |Colum|Type|Option|
 |-----|----|------|
 |postal_code|string|null:false|
@@ -71,7 +71,7 @@ Things you may want to cover:
 
 ### Association
 - belomgs_to : purchase
-- belomgs_to : item
+
 
 
 * Database initialization
