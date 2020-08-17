@@ -35,34 +35,24 @@ Things you may want to cover:
 |name|string|null:false|
 |price|integer|null:false|
 |stock|string|null:false|
-|user_id|
-|item_id|
+|category_name|integer|null:false|
+|condition|integer|null:false|
+|delivery_burden|integer|null:false|
+|shipping_area|integer|null:false|
+|shipping_days|integer|null:false|
 
 ### Association
 - belongs_to : user
 - has_many : product_informations
 - has_many : addres
 
-## product_informations
+
+## Purchase
 |Colum|Type|Option|
 |-----|----|------|
-|image|text|null:false|
-|name|string|null:false|
-|category_name|integer|null:false|
-|condition|integer|null:false|
-|delivery_burden|integer|null:false|
-|shipping_area|integer|null:false|
-|shipping_days|integer|null:false|
-|price|integer|null:false|
-
-### Association
-- belongs_to : item
-- has_many : address
-
-## comments
-|Colum|Type|Option|
-|-----|----|------|
-|coment|text｜null : false|
+|coment|text|null : false|
+|user_id|string|null : false|
+|item_id|string|null : false|
 
 ### Association
 - belomgs_to : usr
@@ -80,7 +70,7 @@ Things you may want to cover:
 |phone|string|null:false|
 
 ### Association
-- belomgs_to : comment
+- belomgs_to : Purchase
 - belomgs_to : product_informations
 
 
