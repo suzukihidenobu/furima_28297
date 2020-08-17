@@ -21,7 +21,7 @@ Things you may want to cover:
 |first_name|string|null:false|
 |last_name_kana|string|null:false|
 |first_name_kana|string|null:false|
-|birthday|integer|null:fales|
+|birthday|date|null:false|
 |email|string|null:false,unique:true|
 |password|string|null:false|
 
@@ -32,14 +32,14 @@ Things you may want to cover:
 ## product_informations
 |Colum|Type|Option|
 |-----|----|------|
-|image|text|null:false, foreign_key: true|
-|name|string|null:false, foreign_key: true|
-|category_name|string|null:false, foreign_key: true|
-|item_name|text|null:false, foreign_key: true|
-|delivery_burden|integer|null:false, foreign_key: true|
-|shipping_area|string|null:false, foreign_key: true|
-|shipping_days|integer|null:false,foreign_key: true|
-|price|integer|null:false,foreign_key: true|
+|image|text|null:false|
+|name|string|null:false|
+|category_name|string|null:false|
+|item_condition|text|null:false|
+|delivery_burden|integer|null:false|
+|shipping_area|string|null:false|
+|shipping_days|integer|null:false|
+|price|integer|null:false|
 
 ### Association
 - belongs_to :user
@@ -47,7 +47,7 @@ Things you may want to cover:
 ## comments
 |Colum|Type|Option|
 |-----|----|------|
-|coment|text｜null : false,foreign_key : true|
+|coment|text｜null : false|
 
 ### Association
 - belomgs_to : usr
@@ -57,18 +57,15 @@ Things you may want to cover:
 ## purchase_confirmations
 |Colum|Type|Option|
 |-----|----|------|
-|creadit|integer|null:false,foreign_key: true, unique:true|
-|expiration_date|integer|null:false,foreign_key: true|
-|security|integer|null:false,foreign_key: true|
-|postal code|integer|null:false,foreign_key: true|
-|prefectures|string|null:false,foreign_key: true|
-|city|string|null:false,foreign_key: true|
-|address|integer|null:false,foreign_key: true|
-|building_name|text|null:false,foreign_key: true|
-|phon|integer|null:false,foreign_key: true|
+|postal code|integer|null:false|
+|prefectures|string|null:false|
+|city|string|null:false|
+|address|string|null:false|
+|building_name|text|null:false|
+|phone|string|null:false|
 
 ### Association
-- belongs_to :comment
+
 
 
 * Database initialization
