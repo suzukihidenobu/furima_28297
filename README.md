@@ -35,17 +35,20 @@ Things you may want to cover:
 |name|string|null:false|
 |price|integer|null:false|
 |stock|string|null:false|
+|user_id|
+|item_id|
 
 ### Association
 - belongs_to : user
 - has_many : product_informations
+- has_many : addres
 
 ## product_informations
 |Colum|Type|Option|
 |-----|----|------|
 |image|text|null:false|
 |name|string|null:false|
-|category_name|string|null:false|
+|category_name|integer|null:false|
 |condition|integer|null:false|
 |delivery_burden|integer|null:false|
 |shipping_area|integer|null:false|
@@ -54,7 +57,7 @@ Things you may want to cover:
 
 ### Association
 - belongs_to : item
-
+- has_many : address
 
 ## comments
 |Colum|Type|Option|
@@ -73,11 +76,12 @@ Things you may want to cover:
 |prefectures|integr|null:false|
 |city|string|null:false|
 |address|string|null:false|
-|building_name|text|null:false|
-|phone|integer|null:false|
+|building_name|text|
+|phone|string|null:false|
 
 ### Association
 - belomgs_to : comment
+- belomgs_to : product_informations
 
 
 * Database initialization
