@@ -65,7 +65,7 @@ Things you may want to cover:
 |prefectures|string|null:false|
 |city|string|null:false|
 |address|string|null:false|
-|building_name|text|
+|building_name|string|
 |phone|string|null:false|
 |purchase_id|integer|null:false , foreign_key: true|
 
