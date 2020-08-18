@@ -34,25 +34,27 @@ Things you may want to cover:
 |------|----|-------|
 |image|text|null:false|
 |name|string|null:false|
+|explanation|text|null:false|
 |price|integer|null:false|
 |category_name|integer|null:false|
 |condition|integer|null:false|
 |delivery_burden|integer|null:false|
 |shipping_area|integer|null:false|
 |shipping_days|integer|null:false|
+|user_id|integer|null:false|
 
 ### Association
-- has_one : purchase
+- has_one : purchas
 - belongs_to : user
 
 ## purchases
 |Colum|Type|Option|
 |-----|----|------|
-|user_id|string|null : false|
-|item_id|string|null : false|
+|user_id|inreger|null:false|
+|item_id|integer|null:false|
 
 ### Association
-- has_one : addresses
+- has_one : address
 - belongs_to : user
 - belongs_to : item
 
@@ -65,6 +67,7 @@ Things you may want to cover:
 |address|string|null:false|
 |building_name|text|
 |phone|string|null:false|
+|item_id|integer|null:false|
 
 ### Association
 - belomgs_to : purchase
