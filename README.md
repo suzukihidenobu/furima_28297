@@ -61,8 +61,8 @@ Things you may want to cover:
 ## addresses
 |Colum|Type|Option|
 |-----|----|------|
-|postal_code|integer|null:false|
-|prefectures|string|null:false|
+|postal_code|string|null:false|
+|prefectures|integer|null:false|
 |city|string|null:false|
 |address|string|null:false|
 |building_name|string|
