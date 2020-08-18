@@ -41,7 +41,7 @@ Things you may want to cover:
 |delivery_burden|integer|null:false|
 |shipping_area|integer|null:false|
 |shipping_days|integer|null:false|
-|user_id|integer|null:false|
+|user_id|integer|null:false , foreign_key:true|
 
 ### Association
 - has_one : purchas
@@ -50,8 +50,8 @@ Things you may want to cover:
 ## purchases
 |Colum|Type|Option|
 |-----|----|------|
-|user_id|inreger|null:false|
-|item_id|integer|null:false|
+|user_id|inreger|null:false , foreign_key: true|
+|item_id|integer|null:false , foreign_key: true|
 
 ### Association
 - has_one : address
@@ -62,12 +62,12 @@ Things you may want to cover:
 |Colum|Type|Option|
 |-----|----|------|
 |postal_code|string|null:false|
-|prefectures|integer|null:false|
+|prefectures|string|null:false|
 |city|string|null:false|
 |address|string|null:false|
 |building_name|text|
 |phone|string|null:false|
-|item_id|integer|null:false|
+|purchase_id|integer|null:false , foreign_key: true|
 
 ### Association
 - belomgs_to : purchase
