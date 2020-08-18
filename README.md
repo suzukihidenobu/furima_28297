@@ -32,7 +32,7 @@ Things you may want to cover:
 ## items
 |Column|Type|Options|
 |------|----|-------|
-|image|text|null:false|
+|image|string|null:false|
 |name|string|null:false|
 |explanation|text|null:false|
 |price|integer|null:false|
@@ -61,8 +61,8 @@ Things you may want to cover:
 ## addresses
 |Colum|Type|Option|
 |-----|----|------|
-|postal_code|integer|null:false|
-|prefectures|string|null:false|
+|postal_code|string|null:false|
+|prefectures|integer|null:false|
 |city|string|null:false|
 |address|string|null:false|
 |building|string|
