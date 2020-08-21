@@ -62,12 +62,12 @@ Things you may want to cover:
 ## addresses
 |Colum|Type|Option|
 |-----|----|------|
-|postal_code|string|null:false|
+|postal_code|integer|null:false|
 |prefectures|integer|null:false|
 |city|string|null:false|
 |address|string|null:false|
 |building|string|
-|phone|string|null:false|
+|phone|integer|null:false|
 |purchase_id|integer|null:false , foreign_key: true|
 
 ### Association

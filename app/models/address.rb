@@ -1,4 +1,4 @@
 class Address < ApplicationRecord
-  belomgs_to : purchase
-  
+  belomgs_to :purchase
+
 end
