@@ -1,42 +1,42 @@
-class TweetsController < ApplicationController
-  before_action :set_tweet, only: [:edit, :show]
+class ItemsController < ApplicationController
+  before_action :set_item, only: [:edit, :show]
   before_action :move_to_index, except: [:index, :show]
 
   def index
-    @tweets = Tweet.all
+    @tweets = Item.all
   end
 
   def new
-    @tweet = Tweet.new
+    @tweet = Item.new
   end
 
   def create
-    Tweet.create(tweet_params)
+    Item.create(item_params)
   end
 
   def destroy
-    tweet = Tweet.find(params[:id])
-    tweet.destroy
+    item = Item.find(params[:id])
+    item.destroy
   end
 
   def edit
   end
 
   def update
-    tweet = Tweet.find(params[:id])
-    tweet.update(tweet_params)
+    item = Item.find(params[:id])
+    item.update(tweet_params)
   end
 
   def show
   end
 
   private
-  def tweet_params
-    params.require(:tweet).permit(:name, :image, :text)
+  def item_params
+    params.require(:item).permit(:name, :image, :text)
   end
 
   def set_tweet
-    @tweet = Tweet.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def move_to_index
