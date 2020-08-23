@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  get 'items/index'
   devise_for :users
-  get 'home/index'
-  get 'articles/index'
-  get 'articles/new'
-  
   root to: "items#index"
+  # get 'items/index'
+  # get 'home/index'
+  # get 'articles/index'
+  # get 'articles/new'
   
-  resources :articles
+
+  resources :users, only: [:edit, :update]
+  ##resources :articles
 end
