@@ -11,8 +11,7 @@
   <%= javascript_pack_tag 'application' %>
         <% if user_signed_in? %>
           <div class="user_nav grid-6">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-            <%= link_to "投稿する", new_tweet_path, class: "post" %>
+            
           </div>
         <% else %>
           
@@ -24,3 +23,5 @@
 </body>
 
 </html>
+
+

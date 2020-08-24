@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   
 
   resources :users, only: [:edit, :update]
+  resources :items, only: [:new, :create] do
+    resources :purchases, only: [:index, :creat]
+  end
   ##resources :articles
 end
