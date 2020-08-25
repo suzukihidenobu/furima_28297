@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "items#index"
+  post 'items', to: 'items#create'
+  get 'items', to: 'items#checked'
+  get 'posts/:id', to: 'posts#checked'
+  
   # get 'items/index'
   # get 'home/index'
   # get 'articles/index'
