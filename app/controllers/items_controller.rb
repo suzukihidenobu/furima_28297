@@ -14,9 +14,6 @@ class ItemsController < ApplicationController
     Item.create(item_params)
   end
 
-  
-
-
   def destroy
     item = Item.find(params[:id])
     item.destroy
