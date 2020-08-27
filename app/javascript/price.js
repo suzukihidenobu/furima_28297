@@ -35,8 +35,13 @@ function profit(){
 
   item_price.addEventListener("change", function(){
     let profit = item_price.value;
+    const tax = document.getElementById("add-tax-price");
     let fee = profit * 0.1
-    console.log(fee)
+    tax.textContent = fee
+
+    const tprofit = document.getElementById("profit");
+    tprofit.textContent = profit - fee
+    
   });
 };
 window.addEventListener("load", profit);
