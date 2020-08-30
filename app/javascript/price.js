@@ -31,10 +31,10 @@
 // }
 
 function profit(){
-  const item_price = document.getElementById("item-price");
+  const price = document.getElementById("item-price");
 
-  item_price.addEventListener("change", function(){
-    let profit = item_price.value;
+  price.addEventListener("change", function(){
+    let profit = price.value;
     const tax = document.getElementById("add-tax-price");
     let fee = profit * 0.1
     tax.textContent = fee

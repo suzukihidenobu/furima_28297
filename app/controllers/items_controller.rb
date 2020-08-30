@@ -34,8 +34,9 @@ class ItemsController < ApplicationController
 
   private
   def item_params
+    
     params.require(:item).permit(:id, :image, :name, :explanation, :price,
-       :category_name, :condition, :delivery_burden, :shipping_area, :user_id )
+       :category_name, :condition, :delivery_burden, :shipping_area, :user_id ).merge(user_id: current_user.id)
   end
 
   def set_tweet
