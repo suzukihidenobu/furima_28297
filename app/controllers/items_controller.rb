@@ -3,17 +3,19 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
 
   def index
-    @items = Item.all.order(id: "DESC")
+    # @items = Item.all.order(id: "DESC")
+    @items = Item.order("created_at DESC")
   end
 
   def new
-    @tweet = Item.new
+    @item = Item.new
   end
 
   def create
     Item.create(item_params)
   end
 
+  
   def destroy
     item = Item.find(params[:id])
     item.destroy
@@ -32,7 +34,8 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :image, :text)
+    params.require(:item).permit(:id, :image, :name, :explanation, :price,
+       :category_name, :condition, :delivery_burden, :shipping_area, :user_id )
   end
 
   def set_tweet
