@@ -11,10 +11,27 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-  def create
-    Item.create(item_params)
-  end
 
+  
+  def create
+    # Item.create(item_params)
+    #  binding.pry
+    # Item.create(item_params)
+    # item = Item.find(params[:id])
+    
+    # item.create
+    @item = Item.new(item_params)
+    # @items = Item.all.order("created_at DESC")
+    # binding.pry
+    if @item.valid?
+        @item.save
+        redirect_to root_path
+      else
+        render :index
+    end
+  end
+  
+   
   
   def destroy
     item = Item.find(params[:id])
@@ -31,12 +48,13 @@ class ItemsController < ApplicationController
 
   def show
   end
-
+  # item_info
   private
   def item_params
     
-    params.require(:item).permit(:id, :image, :name, :explanation, :price,
-       :category_name, :condition, :delivery_burden, :shipping_area, :user_id ).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :name, :price, :item_info,
+       :category_name, :condition, :delivery_burden, :shipping_area,
+        :shipping_days).merge(user_id: current_user.id)
   end
 
   def set_tweet

@@ -34,8 +34,8 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null:false|
+|item_info|string|null:false|
 |name|string|null:false|
-|explanation|text|null:false|
 |price|integer|null:false|
 |category_name|integer|null:false|
 |condition|integer|null:false|

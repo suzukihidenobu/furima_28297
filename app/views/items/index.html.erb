@@ -144,9 +144,15 @@
         <div class='item-info'>
           <h3 class='item-name'>
             <%= link_to "投稿する", new_item_path, class:"post" %>
+
+            
+
           </h3>
           <% @items.each do |item| %>
           <div class='item-price'>
+
+          <%= image_tag item.image, class: 'item-image' if item.image.attached? %>
+            
             <span><%=link_to  "販売価格" , new_item_path, class:"post"%>円<br>(税込み)</span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
@@ -197,5 +203,6 @@
     <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
   
 </div>
+</a>
 <%= render "shared/footer" %>
 

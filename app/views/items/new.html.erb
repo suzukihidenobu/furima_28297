@@ -87,7 +87,7 @@
           発送までの日数
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:shipping_days, Shippingays.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
+        <%= f.collection_select(:shipping_days, ShippingDays.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
       </div>
     </div>
     <%# /配送について %>
@@ -105,7 +105,7 @@
             <span class="indispensable">必須</span>
           </div>
           <span class="sell-yen">¥</span>
-          <%= f.text_field :rice, class:"price-input", id:"item-price", placeholder:"半角英数字で入力" %>
+          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"半角英数字で入力" %>
         </div>
         <div class="price-content">
           <span>販売手数料 (10%)</span>
