@@ -48,6 +48,9 @@ window.addEventListener("load", profit);
 
 
 
+
+
+
 // 0:windowがloadされた時にイベント発火するようにする
 // 1:入力欄のid情報を取得する
 // 2:入力欄に値が入力された時のイベントを設置する
