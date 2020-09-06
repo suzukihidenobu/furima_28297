@@ -1,4 +1,4 @@
-class UserCardss
+class Userpurchases
 
   include ActiveModel::Model
   attr_accessor :name, :name_reading, :nickname, :postal_code, :prefecture, :city, :house_number, :building_name, :price
@@ -26,6 +26,6 @@ end
     # 住所の情報を保存
     Address.create(postal_code: postal_code, prefecture: prefecture, city: city, house_number: house_number, building_name: building_name,user_id: user.id)
     # 寄付金の情報を保存
-    Card.create(price: price, user_id: user.id)
+    Purchases.create(price: price, user_id: user.id)
   end
 end

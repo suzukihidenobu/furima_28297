@@ -11,7 +11,7 @@ const pay = () => {
   const formResult = document.getElementById("charge-form");
   const formData = new FormData(formResult);
 
-  const card = { // カードオブジェクトを生成
+  const purchases = { // カードオブジェクトを生成
       number: formData.get("number"),              // カード番号
       cvc: formData.get("cvc"),                    // カード裏面の3桁の数字
       exp_month: formData.get("exp_month"),        // 有効期限の月
@@ -21,12 +21,12 @@ const pay = () => {
 // 「exp_year」だけ「20〜」となっているのは、入力フォームでは有効期限の年が「20,21,22, ...」
 // と下2桁だけの選択となっているので、頭に「20」と付けることで「20〇〇年」となります。
 
-    Payjp.createToken(card, (status, response) => {  
+    Payjp.createToken(purchases, (status, response) => {  
 // 「もし通信が成功したら」という条件から始まります。
       if (status === 200) {
         const token = response.id; // 「token」「renderDom」という定数を順に生成します。
         const renderDom = document.getElementById("charge-form");   //idを元に要素を取得
-        const tokenObj = `<input value=${token} type="hidden" name='card_token'>`;   //paramsの中にトークンを含める
+        const tokenObj = `<input value=${token} type="hidden" name='purchases_token'>`;   //paramsの中にトークンを含める
         renderDom.insertAdjacentHTML("beforeend", tokenObj);  //フォームの一番最後に要素を追加
 // 「tokenObj」ですが、これはトークンの情報を含んでいます。こちらはブラウザ上に表示する必要性がないので、「type=”hidden”」としています。
 // 最後に、「insertAdjacentHTML」でフォームの一番最後にtokenObjを追加します。
