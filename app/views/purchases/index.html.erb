@@ -14,7 +14,6 @@
       <%= image_tag @item.image, class: 'buy-item-img' %> 
     <%# 出品した画面をいれる %>
     
-    
       <div class='buy-item-right-content'>
       
         <h2 class='buy-item-text'>
@@ -42,8 +41,10 @@
     </div>
     <%# /支払額の表示 %>
 
-    <%= form_with id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+    <%= form_with url: item_purchases_path, id: "charge-form", class: "form", local: true do |f|%>
     <%# カード情報の入力 %>
+    <%= render 'layouts/error_messages', model: @purchases %>
+    <%# エラーメッセージが表示されます。 %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
         クレジットカード情報入力
@@ -83,7 +84,7 @@
     </div>
     <%# /カード情報の入力 %>
     <%# 配送先の入力 %>
-    <div class='shipping-address-form'>
+    <div class='shipping-es-form'>
       <h1 class='info-input-haedline'>
         配送先入力
       </h1>
@@ -92,7 +93,7 @@
           <label class="form-text">郵便番号</label>
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_field 'postal-code', class:"input-default", id:"postal-code", placeholder:"例）123-4567", maxlength:"8" %>
+        <%= f.text_field 'postal_code', class:"input-default", id:"postal-code", placeholder:"例）123-4567", maxlength:"8" %>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
@@ -118,7 +119,7 @@
           <label class="form-text">番地</label>
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_field 'addresses', class:"input-default", id:"addresses", placeholder:"例）青山1-1-1"%>
+        <%= f.text_field 'address_number', class:"input-default", id:"address_number", placeholder:"例）青山1-1-1"%>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
@@ -132,11 +133,11 @@
           <label class="form-text">電話番号</label>
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_field 'phone-number', class:"input-default", id:"phone-number", placeholder:"例）09012345678",maxlength:"11"%>
+        <%= f.text_field 'phone', class:"input-default", id:"phone", placeholder:"例）09012345678",maxlength:"11"%>
       </div>
     
     <div class='buy-btn'>
-      <%= f.submit "購入" ,class:"buy-red-btn" %>
+      <%= f.submit "購入",class:"buy-red-btn" %>
     </div>
     </div>
   <% end %>
