@@ -45,7 +45,7 @@ Things you may want to cover:
 |user_id|integer|null:false , foreign_key:true|
 
 ### Association
-- has_one : purchase
+- has_one : purchases
 - belongs_to : user
 
 ## purchases
@@ -63,15 +63,28 @@ Things you may want to cover:
 |Colum|Type|Option|
 |-----|----|------|
 |postal_code|integer|null:false|
-|prefectures|integer|null:false|
+|prefecture|integer|null:false|
 |city|string|null:false|
 |address|string|null:false|
 |building|string|
 |phone|integer|null:false|
-|purchase_id|integer|null:false , foreign_key: true|
+|purchases_id|integer|null:false , foreign_key: true|
 
 ### Association
-- belomgs_to : purchase
+- belongs_to : purchases
+
+
+## credit
+|Colum|Type|Option|
+|-----|----|------|
+|card_number|integer|null:false|
+|card-exp-month|integer|null:false|
+|card-exp-year|integer|null:false|
+|card-cvc|integer|null:false|
+
+### Association
+- belongs_to : purchases
+
 
 * How to run the test suite
 
@@ -80,3 +93,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+

@@ -18,6 +18,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.datetime :reset_password_sent_at
 
       t.boolean :checked
+      # trueまたはfalseの真理値を判断する型です。既読機能実装時に「既読か未読か」をboolean型で管理します。
 
       ## Rememberable
       t.datetime :remember_created_at

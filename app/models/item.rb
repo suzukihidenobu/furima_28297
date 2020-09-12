@@ -4,6 +4,8 @@ class Item < ApplicationRecord
   has_one_attached :image
   has_many :items, through: :purchases
 
+  has_one :item_order
+
   with_options presence: true do
   validates :image, presence: true
   
@@ -17,9 +19,9 @@ class Item < ApplicationRecord
   validates :shipping_days, presence: true
   
 
-  
-  
+end
 end
 
-
-end
+#「バリデーション」を設定します。「バリデーション」とは「送信する情報に制限をかける」というものです。
+#例えば、名前を入力するときは「全角のみOK」というバリデーションは、まだカリキュラムでは学んでいません。
+#そのような複雑なバリデーションを記述する際は、with_optionを使用します。
