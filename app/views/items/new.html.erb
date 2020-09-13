@@ -138,6 +138,13 @@
     <%# /注意書き %>
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
+
+<% if controller_name != 'sessions' %>
+  <%= link_to "ログインページへ戻る", new_user_session_path(resource_name), class: 'Button' %>
+  <br/>
+<% end %>
+
+
       <%= f.submit "出品する" ,class:"sell-btn" %>
       <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
