@@ -6,10 +6,12 @@ class PurchasesController < ApplicationController
     @purchases = UserCards.new
     @item = Item.find(params[:item_id])
   end
-  # 出品者であるAさんが直接購入ページ（http://localhost:3000/items/5/dealings）を入力すると、トップページに遷移する
-  # つまり、自分で出品した商品は買えなくしている↓
-  # redirect_to root_url if !set_item.dealing.nil? || current_user.id == set_item.user_id
-  # @puchases = UserPurchases.new
+    # 出品者であるAさんが直接購入ページ（http://localhost:3000/items/5/dealings）を入力すると、トップページに遷移する
+    # つまり、自分で出品した商品は買えなくしている↓
+    # redirect_to root_url if !set_item.dealing.nil? || current_user.id == set_item.user_id
+    # @puchases = UserPurchases.new
+  
+
 
   def new
     @purchases = UserCards.new
@@ -23,39 +25,46 @@ class PurchasesController < ApplicationController
     if @purchases.valid?
 
       # binding.pry
-
+      
       pay_item
       @purchases.save
-      redirect_to root_path
+      return redirect_to root_path
     else
       render 'index'
     end
+  
   end
 
-   private
+  private
 
   def purchases_params
     params.permit(:postal_code, :shipping_area, :city, :address_number, :building,
-                  :shipping_area, :phone, :token, :item_id).merge(user_id: current_user.id)
+     :shipping_area, :phone, :token, :item_id).merge(user_id: current_user.id)
   end
 
   def set_purchases
     @purchases = Purchases.find(params[:id])
    end
 
-  def pay_item
-    Payjp.api_key = 'sk_test_3aa9bc13a3833dee213f87e6' # PAY.JPテスト秘密鍵
+   def pay_item
+    Payjp.api_key = "sk_test_3aa9bc13a3833dee213f87e6"  # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
-      amount: @item.price, # 商品の値段
-      card: purchases_params[:token], # カードトークン
-      currency: 'jpy' # 通貨の種類(日本円)
+      amount: @item.price,  # 商品の値段
+      card: purchases_params[:token],    # カードトークン
+      currency:'jpy'                 # 通貨の種類(日本円)
     )
+  end
+
+
+   def move_to_index
+    unless user_signed_in?
+      redirect_to action: :index
+    end
+  end
+
  end
 
-  def move_to_index
-    redirect_to action: :index unless user_signed_in?
- end
- end
+ 
 
 # Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # PAY.JPのメソッドを利用するためには、環境変数を読み込む
 #     customer = Payjp::Customer.create(  #顧客に紐づいているカードの情報を生成しましょう。（8~10行目）
@@ -75,3 +84,5 @@ class PurchasesController < ApplicationController
 #     else
 #       redirect_to "new" # カード登録画面、カードの登録後はトップページにリダイレクトされるようにしました。
 #     end
+
+
