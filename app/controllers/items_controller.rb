@@ -1,3 +1,4 @@
+
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show]
   before_action :move_to_index, except: [:index, :show]
@@ -16,6 +17,7 @@ class ItemsController < ApplicationController
   end
 
   
+
   def destroy
     item = Item.find(params[:id])
     item.destroy
@@ -32,11 +34,15 @@ class ItemsController < ApplicationController
   def show
   end
 
+  # item_paramsというストロングパラメーターを定義し、createメソッドの引数に使用して、itemssテーブルへ保存できるようにしました。
+
   private
+
   def item_params
-    
-    params.require(:item).permit(:id, :image, :name, :explanation, :price,
-       :category_name, :condition, :delivery_burden, :shipping_area, :user_id ).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :name, :price, :item_info,
+                                 :category_name, :condition, :delivery_burden, :shipping_area,
+                                 :shipping_days).merge(user_id: current_user.id)
+
   end
 
   def set_tweet
@@ -44,8 +50,10 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
+
     unless user_signed_in?
       redirect_to action: :index
     end
+
   end
 end

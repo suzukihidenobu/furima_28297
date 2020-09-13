@@ -1,4 +1,5 @@
 class DeliveryBurden < ActiveHash::Base
+
   
   self.data = [
               {id: 0, name: '---'},
@@ -6,3 +7,4 @@ class DeliveryBurden < ActiveHash::Base
               {id: 2, name: '送料込み(出品者負担)'}, 
             ]
 end
+
