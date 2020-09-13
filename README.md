@@ -11,7 +11,7 @@ Things you may want to cover:
 
 * Configuration
 
-* Database creation
+
 
 ## users_Table
 |Column|Type|Options|
