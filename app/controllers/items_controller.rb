@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController  #アッパーキャメルケース先頭から単語の区切りを大文字で表す
   before_action :set_item, only: [:edit, :show]
+  before_action :authenticate_user!,only: [:new,:edit]
   # before_action :move_to_index, except: [:index, :show]
 def index
   # @items = Item.all
@@ -9,6 +10,8 @@ end
 
 def new
 @item = Item.new # items_controller.rbにnewアクションを定義します。
+
+
 end
 
 def create

@@ -138,6 +138,9 @@
     <%# /注意書き %>
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
+
+    <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+    
       <%= f.submit "出品する" ,class:"sell-btn" %>
       <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
@@ -157,3 +160,4 @@
     </p>
   </footer>
 </div>
+
