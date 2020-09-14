@@ -6,7 +6,7 @@ ruby '2.6.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.4.4'
+gem 'mysql2', '>= 0.5.3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -31,6 +31,14 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 4.0.0'
+#RSpecを使用するためのgemを導入
+#Rspecとは
+ #・テストコード: プログラムがどのように振る舞うべきかを定義したもの
+ #・プロダクトコード： テストコードで定義された振る舞いを実装したもの
+
+#RSpecを使用できるように、専用のgemを導入する必要があります。
+#'rspec-rails'をGemfileの:development, :testのグループの中に記述しました。
 end
 
 group :development do
@@ -40,7 +48,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rubocop', require: false
+  gem 'rubocop', require: false #（ルボコップ）はRubyの静的コード解析ツールです。「インデントが揃っていない」「余分な改行・スペースがある」などの指摘をRubyStyleGuideに基づいて行ってくれます。
 end
 
 group :test do
@@ -55,6 +63,22 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'pry-rails'
+
 group :production do
   gem 'rails_12factor'
 end
+
+gem 'active_hash'
+#Active_Hashとは、都道府県名などの変更されないデータをモデルファイル内に直接記述することで、
+#データベースへ保存せずにデータを取り扱うことができるGemです。
+#すなわち、Active_Hashを用いることで、モデルファイルに直接記述した変更されないデータに対して、
+#ActiveRecordのメソッドを用いることができます。
+
+gem 'devise' #ユーザー管理機能を簡単に実装するためのGemです。。
+
+gem 'mini_magick' # 「ImageMagick」とは、コマンドラインから簡単に画像の保存形式の変更などが行えるツールです。
+gem 'image_processing', '~> 1.2'
+
+gem 'payjp' #PAY.JPの機能を使えるようにgemを導入しました。
+
+gem 'factory_bot_rails' #テストで使うGemを導入
