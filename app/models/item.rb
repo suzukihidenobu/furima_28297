@@ -7,10 +7,10 @@ class Item < ApplicationRecord
   has_one :item_order
 
   with_options presence: true do
-  validates :image, presence: true
-  validates :name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "は全角で入力してください。"}
-  validates :price, presence: true, format: { with: /\A[a-z0-9]+\z/i, message: "は半角英数で入力してください。"}
-  validates :item_info, presence: true
+  validates :image
+  validates :name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "は全角で入力してください。"}
+  validates :price, format: { with: /\A[a-z0-9]+\z/i, message: "は半角英数で入力してください。"}
+  validates :item_info
   validates :category_name
   validates :condition
   validates :delivery_burden
