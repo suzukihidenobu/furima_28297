@@ -8,11 +8,17 @@ def index
 end
 
 def new
-  @item = Item.new # items_controller.rbにnewアクションを定義します。
+@item = Item.new # items_controller.rbにnewアクションを定義します。
 end
 
 def create
-Item.create(item_params) # createアクション内のcreateメソッドで実行します。
+  @item = Item.new(item_params)
+  if @item.valid?
+    @item.save
+  else
+    render :new
+  end
+  # Item.create(item_params) # createアクション内のcreateメソッドで実行します。
 end
 
 def destroy
