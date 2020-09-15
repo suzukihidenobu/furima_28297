@@ -21,7 +21,6 @@ def create
   if @item.valid?
   @item.save
   redirect_to root_path
-    
   else
     render :new
   end
@@ -42,9 +41,8 @@ def update
   else
     render 'edit'
 end
+end
 
-end
-end
 
 def show
 end
