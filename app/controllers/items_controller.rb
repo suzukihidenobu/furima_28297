@@ -35,7 +35,7 @@ end
 
 def update
   item = Item.find(params[:id])
-  item.update(tweet_params)
+  item.update(item_params)
 end
 
 def show
@@ -48,7 +48,7 @@ def item_params
      :shipping_days).merge(user_id: current_user.id)
 end
 
-def set_tweet
+def set_item
   @item = Item.find(params[:id])
 end
 
