@@ -19,6 +19,7 @@ def create
   @item = Item.new(item_params)
   if @item.valid?
     @item.save
+    
   else
     render :new
   end
