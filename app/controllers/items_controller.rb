@@ -48,7 +48,7 @@ def item_params
      :shipping_days).merge(user_id: current_user.id)
 end
 
-def set_tweet
+def set_item
   @item = Item.find(params[:id])
 end
 
