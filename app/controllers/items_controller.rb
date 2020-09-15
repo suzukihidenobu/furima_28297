@@ -37,12 +37,12 @@ def edit
 end
 
 def update
-  item.update(item_params)
-  if @item.valid?
-     @item.save
-     redirect_to root_path
-  else
-  render :edit
+if @item.update(item_params)
+    redirect_to item_path
+else
+    render 'edit'
+end
+  en
 end
 end
 
