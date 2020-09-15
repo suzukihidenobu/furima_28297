@@ -11,7 +11,7 @@ def index
 end
 
 def new
-@item = Item.new # items_controller.rbにnewアクションを定義します。
+  @item = Item.new # items_controller.rbにnewアクションを定義します。
 
 
 end
@@ -19,8 +19,8 @@ end
 def create
   @item = Item.new(item_params)
   if @item.valid?
-    @item.save
-    redirect_to root_path
+  @item.save
+  redirect_to root_path
     
   else
     render :new
@@ -37,12 +37,12 @@ def edit
 end
 
 def update
-if @item.update(item_params)
+  if @item.update(item_params)
     redirect_to item_path
-else
+  else
     render 'edit'
 end
-  en
+
 end
 end
 
@@ -51,9 +51,8 @@ end
 # item_paramsというストロングパラメーターを定義し、createメソッドの引数に使用して、itemssテーブルへ保存できるようにしました。
 private
 def item_params
-  params.require(:item).permit(:image, :name, :price, :item_info,
-    :category_name, :condition, :delivery_burden, :shipping_area,
-     :shipping_days).merge(user_id: current_user.id)
+  params.require(:item).permit(:image, :name, :price, :item_info,:category_name, :condition,
+     :delivery_burden, :shipping_area,:shipping_days).merge(user_id: current_user.id)
 end
 
 def set_item
