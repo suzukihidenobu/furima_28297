@@ -2,8 +2,9 @@ class ItemsController < ApplicationController  #アッパーキャメルケー�
   before_action :set_item, only: [:edit, :show]
   before_action :authenticate_user!,only: [:new,:edit]
   # before_action :move_to_index, except: [:index, :show]
+
 def index
-  # @items = Item.all
+  @items = Item.all
   # allメソッドを使用して、timssテーブルすべてのレコードをインスタンス変数に代入し、ビューに受け渡します。
   @items = Item.order("created_at DESC") #記事一覧が新規投稿順に並ぶように記述します。
 end

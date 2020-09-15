@@ -139,9 +139,11 @@
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
 
-    <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+    
     
       <%= f.submit "出品する" ,class:"sell-btn" %>
+      <div id="image-list"></div>
+
       <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
