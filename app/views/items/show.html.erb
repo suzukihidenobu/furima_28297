@@ -10,6 +10,7 @@
       <%= image_tag "item-sample.png" ,class:"item-box-img" %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
       <% if @item.purchase.present?%>
+
       <div class='sold-out'>
         <span>Sold Out!!</span>
       </div>
@@ -17,6 +18,7 @@
     <% end %>
     </div>
     
+
     <div class="item-price-box">
       <span class="item-price">
         ¥ 999,999,999
@@ -33,7 +35,9 @@
     <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
 
     <%# 商品が売れていない場合はこちらを表示しましょう %>
+
     <%= link_to '購入画面に進む', item_purchases_path(@item),method: :get, class:"item-red-btn"%>
+
     <%# //商品が売れていない場合はこちらを表示しましょう %>
 
 

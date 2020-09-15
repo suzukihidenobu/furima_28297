@@ -15,9 +15,9 @@ class User < ApplicationRecord
              :recoverable, :rememberable, :validatable
        validates :nickname, :first_name, :last_name,
                 :first_name_kana, :last_name_kana, 
-                :birthday, :email, :encrypted_password, presence: true
-       
-       end
+
+                :birthday, :email, :encrypted_password ,presence: true
+end
 
 
      #Userモデルに、validates :name, presence: trueを追記します。

@@ -13,6 +13,8 @@ function profit(){
     
   });
 };
+
 window.addEventListener("load", profit);
+
 
 
