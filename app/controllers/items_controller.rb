@@ -35,7 +35,8 @@ class ItemsController < ApplicationController  #アッパーキャメルケー�
 
   def update
     item = Item.find(params[:id])
-    item.update(tweet_params)
+    item.update(item_params)
+    redirect_to root_path
   end
 
   def show
@@ -48,7 +49,7 @@ class ItemsController < ApplicationController  #アッパーキャメルケー�
       :shipping_days).merge(user_id: current_user.id)
   end
 
-  def set_tweet
+  def set_item
     @item = Item.find(params[:id])
   end
 
