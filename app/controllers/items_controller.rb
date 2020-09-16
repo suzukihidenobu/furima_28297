@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController  #アッパーキャメルケース先頭から単語の区切りを大文字で表す
-  before_action :set_item, only: [:edit, :show]
+  before_action :set_item, only: [:edit, :show, :update]
   before_action :authenticate_user!,only: [:new,:edit]
   
   # before_action :move_to_index, except: [:index, :show]
@@ -40,7 +40,7 @@ def update
     redirect_to item_path
   else
     render 'edit'
-end
+  end
 end
 
 
