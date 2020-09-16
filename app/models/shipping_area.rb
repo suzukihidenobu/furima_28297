@@ -1,5 +1,5 @@
 class ShippingArea < ActiveHash::Base
-  
+ 
 #カラムをgenre_idにする理由は、ジャンルのidをarticlesテーブルに保存するためです。
 #そうすることで、idに紐付いているジャンルの情報を取得できます。
   self.data = [
