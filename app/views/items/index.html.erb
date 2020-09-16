@@ -131,7 +131,7 @@
         <%= link_to item_path(item) do %>
         <div class='item-img-content'>
         <%= image_tag item.image, class: 'item-img' if item.image.attached? %>
-          <%# <%= image_tag "item-sample.png", class: "item-img" %> %>
+          <%# <%= image_tag "item-sample.png", class: "item-img" %> 
 
           <%# 商品が売れていればsold outを表示しましょう %>
           <% if item.purchase.present?%>
@@ -145,7 +145,7 @@
         <div class='item-info'>
           <h3 class='item-name'>
             <%# <%= "商品名" %> 
-            <%# <%= link_to "投稿する", new_item_path, class:"post" %> %>
+            <%# <%= link_to "投稿する", new_item_path, class:"post" %> 
           <%= item.name %>
           </h3>
           <div class='item-price'>
