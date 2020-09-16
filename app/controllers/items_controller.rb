@@ -12,8 +12,6 @@ end
 
 def new
   @item = Item.new # items_controller.rbにnewアクションを定義します。
-
-
 end
 
 def create
@@ -31,6 +29,7 @@ end
 def destroy
   item = Item.find(params[:id])
   item.destroy
+  redirect_to root_path
 end
 
 def edit
