@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController  #アッパーキャメルケース先頭から単語の区切りを大文字で表す
   before_action :set_item, only: [:edit, :show]
   before_action :authenticate_user!,only: [:new,:edit]
+  
   # before_action :move_to_index, except: [:index, :show]
 
 def index
@@ -10,7 +11,7 @@ def index
 end
 
 def new
-@item = Item.new # items_controller.rbにnewアクションを定義します。
+  @item = Item.new # items_controller.rbにnewアクションを定義します。
 
 
 end
@@ -18,7 +19,9 @@ end
 def create
   @item = Item.new(item_params)
   if @item.valid?
-    @item.save
+  @item.save
+  redirect_to root_path
+    
   else
     render :new
   end
@@ -34,18 +37,21 @@ def edit
 end
 
 def update
-  item = Item.find(params[:id])
-  item.update(tweet_params)
+  if @item.update(item_params)
+    redirect_to item_path
+  else
+    render 'edit'
 end
+end
+
 
 def show
 end
 # item_paramsというストロングパラメーターを定義し、createメソッドの引数に使用して、itemssテーブルへ保存できるようにしました。
 private
 def item_params
-  params.require(:item).permit(:image, :name, :price, :item_info,
-    :category_name, :condition, :delivery_burden, :shipping_area,
-     :shipping_days).merge(user_id: current_user.id)
+  params.require(:item).permit(:image, :name, :price, :item_info,:category_name, :condition,
+     :delivery_burden, :shipping_area,:shipping_days).merge(user_id: current_user.id)
 end
 
 def set_item
