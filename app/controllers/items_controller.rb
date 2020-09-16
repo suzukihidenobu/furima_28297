@@ -32,7 +32,9 @@ class ItemsController < ApplicationController  #アッパーキャメルケー�
     redirect_to root_path
   end
 
+
   def edit
+
   end
 
   def update
@@ -42,6 +44,7 @@ class ItemsController < ApplicationController  #アッパーキャメルケー�
       render 'edit'
     end
   end
+
 
 
   def show
