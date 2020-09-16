@@ -3,7 +3,7 @@ class ItemsController < ApplicationController  #アッパーキャメルケー�
   before_action :authenticate_user!,only: [:new,:edit]
   # before_action :move_to_index, except: [:index, :show]
 def index
-  # @items = Item.all
+  @items = Item.all
   # allメソッドを使用して、timssテーブルすべてのレコードをインスタンス変数に代入し、ビューに受け渡します。
   @items = Item.order("created_at DESC") #記事一覧が新規投稿順に並ぶように記述します。
 end
@@ -18,6 +18,7 @@ def create
   @item = Item.new(item_params)
   if @item.valid?
     @item.save
+    redirect_to root_path
   else
     render :new
   end
@@ -33,8 +34,11 @@ def edit
 end
 
 def update
-  item = Item.find(params[:id])
-  item.update(tweet_params)
+  if @item.update(item_params)
+    redirect_to item_path
+  else
+    render 'edit'
+  end
 end
 
 def show
@@ -47,7 +51,7 @@ def item_params
      :shipping_days).merge(user_id: current_user.id)
 end
 
-def set_tweet
+def set_item
   @item = Item.find(params[:id])
 end
 
@@ -55,3 +59,4 @@ def move_to_index
   redirect_to action: :index
 end
 end
+
