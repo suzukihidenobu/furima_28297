@@ -56,11 +56,11 @@ ActiveRecord::Schema.define(version: 2020_09_04_003308) do
     t.string "name", null: false
     t.string "item_info", null: false
     t.integer "price", null: false
-    t.integer "category_name", null: false
-    t.integer "condition", null: false
-    t.integer "delivery_burden", null: false
-    t.integer "shipping_area", null: false
-    t.integer "shipping_days", null: false
+    t.integer "category_name_id", null: false
+    t.integer "condition_id", null: false
+    t.integer "delivery_burden_id", null: false
+    t.integer "shipping_area_id", null: false
+    t.integer "shipping_days_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
