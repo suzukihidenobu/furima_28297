@@ -4,8 +4,7 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.all
-  ビューに受け渡します。
-    @items = Item.order('created_at DESC') します。
+    @items = Item.order('created_at DESC') 
   end
 
   def new
