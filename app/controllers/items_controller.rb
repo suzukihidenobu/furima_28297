@@ -1,14 +1,13 @@
-class ItemsController < ApplicationController 
+class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show, :update]
   before_action :authenticate_user!, only: [:new, :edit]
-  
+
   def index
-   
-    @items = Item.order('created_at DESC') 
+    @items = Item.order('created_at DESC')
   end
 
   def new
-    @item = Item.new 
+    @item = Item.new
   end
 
   def create
@@ -29,7 +28,7 @@ class ItemsController < ApplicationController
 
   def edit
   end
-  
+
   def update
     if @item.update(item_params)
       redirect_to item_path
@@ -41,7 +40,7 @@ class ItemsController < ApplicationController
   def show
   end
 
- private
+  private
 
   def item_params
     params.require(:item).permit(:image, :name, :price, :item_info, :category_name_id, :condition_id,
