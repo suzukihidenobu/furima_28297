@@ -1,14 +1,18 @@
-class ItemsController < ApplicationController 
+class ItemsController < ApplicationController  # アッパーキャメルケース先頭から単語の区切りを大文字で表す
   before_action :set_item, only: [:edit, :show, :update]
   before_action :authenticate_user!, only: [:new, :edit]
-  
+
+  # before_action :move_to_index, except: [:index, :show]
+
   def index
+
    
     @items = Item.order('created_at DESC') 
+
   end
 
   def new
-    @item = Item.new 
+    @item = Item.new # items_controller.rbにnewアクションを定義します。
   end
 
   def create
@@ -16,9 +20,11 @@ class ItemsController < ApplicationController
     if @item.valid?
       @item.save
       redirect_to root_path
+
     else
       render :new
     end
+    # Item.create(item_params) # createアクション内のcreateメソッドで実行します。
   end
 
   def destroy
@@ -26,6 +32,7 @@ class ItemsController < ApplicationController
     item.destroy
     redirect_to root_path
   end
+
 
 
   def update
@@ -39,6 +46,7 @@ class ItemsController < ApplicationController
 
 
   def show
+    # @item = Item.find(params[:id])
   end
 
 
