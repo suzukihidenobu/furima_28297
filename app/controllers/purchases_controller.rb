@@ -1,10 +1,13 @@
 class PurchasesController < ApplicationController
-  # before_action :set_item, only: [:edit, :show]
+  before_action :set_purchases, only: [:edit, :show]
   before_action :move_to_index, except: [:index, :show]
   # before_action :set_purchases, only: [:index, :show]
   def index
-    @purchases = UserCards.new
     @item = Item.find(params[:item_id])
+    if @item.purchase != nil
+      redirect_to root_path
+    end
+    @purchases = UserCards.new
   end
   # 出品者であるAさんが直接購入ページ（http://localhost:3000/items/5/dealings）を入力すると、トップページに遷移する
   # つまり、自分で出品した商品は買えなくしている↓
@@ -41,7 +44,7 @@ class PurchasesController < ApplicationController
 
   def set_purchases
     @purchases = Purchases.find(params[:id])
-   end
+  end
 
   def pay_item
     Payjp.api_key = 'sk_test_3aa9bc13a3833dee213f87e6' # PAY.JPテスト秘密鍵
@@ -50,12 +53,20 @@ class PurchasesController < ApplicationController
       card: purchases_params[:token], # カードトークン
       currency: 'jpy' # 通貨の種類(日本円)
     )
- end
+  end
 
   def move_to_index
+    
     redirect_to action: :index unless user_signed_in?
+  end
  end
- end
+
+#  def correct_user
+#   @purchases = current_user.purchases.find_by(id: params[:id])
+#     unless @index
+#       redirect_to root_url
+#     end
+#  end
 
 # Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # PAY.JPのメソッドを利用するためには、環境変数を読み込む
 #     customer = Payjp::Customer.create(  #顧客に紐づいているカードの情報を生成しましょう。（8~10行目）
