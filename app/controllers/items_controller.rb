@@ -27,6 +27,9 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
+
+
+
   def update
     if @item.update(item_params)
       redirect_to item_path
@@ -34,6 +37,9 @@ class ItemsController < ApplicationController
       render 'edit'
     end
   end
+
+
+
 
   def show
   end
