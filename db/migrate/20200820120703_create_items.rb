@@ -17,4 +17,3 @@ class CreateItems < ActiveRecord::Migration[6.0]
 end
 
 
-# マイグレーションファイルにはデフォルトでtimestampsが記載されていますが、こちらは型の名称ではなく、Railsが独自に用意している特別なものです。
