@@ -4,7 +4,7 @@ class PurchasesController < ApplicationController
   # before_action :set_purchases, only: [:index, :show]
   def index
     @item = Item.find(params[:item_id])
-    if @item.purchase != nil
+    if @item.purchase != nil || @item.user == current_user
       redirect_to root_path
     end
     @purchases = UserCards.new
