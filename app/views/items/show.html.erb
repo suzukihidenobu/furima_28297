@@ -42,10 +42,16 @@
           <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
         <%# <% unless @item.purchase.present?%> 
         <% else %>
+        
           <%= link_to '購入画面に進む', item_purchases_path(@item),method: :get, class:"item-red-btn" %>
         <% end %>
+      
+      <% else %>
+     
+      <%= link_to '購入画面に進む', new_user_session_path ,method: :get, class:"item-red-btn" %>
+     
       <% end %>
-    <%# <% end %> 
+ 
 
 
     <%# //商品が売れていない場合はこちらを表示しましょう %>
@@ -53,7 +59,7 @@
 
     <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
-    <div class="item-explain-box">
+    <%# <div class="item-explain-box"> %>
       <span><%= @item.item_info %></span>
     </div>
     <table class="detail-table">
