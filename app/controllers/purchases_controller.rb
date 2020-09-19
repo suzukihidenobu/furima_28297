@@ -1,9 +1,8 @@
 class PurchasesController < ApplicationController
   before_action :set_purchases, only: [:edit, :show]
   before_action :move_to_index, except: [:index, :show]
-
+  before_action :set_item, only: [:index]
   def index
-    @item = Item.find(params[:item_id])
     redirect_to root_path if !@item.purchase.nil? || @item.user == current_user
     @purchases = UserCards.new
   end
@@ -26,6 +25,12 @@ class PurchasesController < ApplicationController
     end
   end
 
+  def exit
+  end
+
+  def show
+  end
+
    private
 
   def purchases_params
@@ -35,6 +40,15 @@ class PurchasesController < ApplicationController
 
   def set_purchases
     @purchases = Purchases.find(params[:id])
+  end
+
+  def item_params
+    params.require(:item).permit(:image, :name, :price, :item_info, :category_name_id, :condition_id,
+                                 :delivery_burden_id, :shipping_area_id, :shipping_days_id).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 
   def pay_item
@@ -49,4 +63,4 @@ class PurchasesController < ApplicationController
   def move_to_index
     redirect_to action: :index unless user_signed_in?
   end
- end
+end
