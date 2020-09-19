@@ -43,7 +43,7 @@
 
     <%= form_with url: item_purchases_path, id: "charge-form", class: "form", local: true do |f|%>
     <%# カード情報の入力 %>
-    <%= render 'layouts/error_messages', model: @purchases %>
+    <%= render 'shared/error_messages', model: @purchases %>
     <%# エラーメッセージが表示されます。 %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
