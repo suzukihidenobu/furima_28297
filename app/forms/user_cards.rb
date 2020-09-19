@@ -12,7 +12,6 @@ class UserCards
 
   def save
     purchase = Purchase.create(item_id: item_id, user_id: user_id)
-    binding.pry
     Address.create(postal_code: postal_code, address_number: address_number, phone: phone, city: city, building: building, shipping_area: shipping_area, purchase_id: purchase.id)
   end
 end
