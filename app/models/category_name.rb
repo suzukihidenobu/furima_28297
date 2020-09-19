@@ -13,4 +13,3 @@ class CategoryName < ActiveHash::Base
     { id: 10, name: 'その他' }
   ]
 end
-

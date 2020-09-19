@@ -11,5 +11,3 @@ class User < ApplicationRecord
             :first_name_kana, :last_name_kana,
             :birthday, :email, :encrypted_password, presence: true
 end
-
-
