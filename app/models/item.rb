@@ -11,9 +11,9 @@ class Item < ApplicationRecord
   has_one_attached :image
   has_many :items
   has_one :item_order
-  
+
   with_options presence: true do
-    validates :image 
+    validates :image
     validates :name
     validates :item_info
     validates :category_name_id
@@ -22,9 +22,6 @@ class Item < ApplicationRecord
     validates :shipping_area_id
     validates :shipping_days_id
     validates :price, format: { with: /\A[a-z0-9]+\z/i, message: 'は半角英数で入力してください。' }
-    end
+  end
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
 end
-
-
-
