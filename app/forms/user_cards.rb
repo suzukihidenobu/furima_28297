@@ -4,7 +4,6 @@ class UserCards
   attr_accessor :name, :name_reading, :nickname, :postal_code, :shipping_area_id,
                 :city, :phone, :building, :price, :address_number, :commit, :item_id, :token, :user_id, :purchase_id
 
-
   validates :shipping_area_id, numericality: { other_than: 0, message: "can't be blank" }
   validates :city, presence: true
   validates :address_number, presence: true

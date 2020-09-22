@@ -18,4 +18,3 @@ class User < ApplicationRecord
   year_month_day = /\A\d{4}-\d{2}-\d{2}\z/
   validates :birthday, presence: true, format: { with: year_month_day }
 end
-

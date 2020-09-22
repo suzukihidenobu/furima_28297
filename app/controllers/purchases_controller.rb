@@ -1,6 +1,5 @@
 class PurchasesController < ApplicationController
-
-before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, except: [:index, :show]
   before_action :set_purchases, only: [:edit, :show]
   before_action :move_to_index, except: [:index, :show]
   before_action :set_item, only: [:index]
@@ -13,11 +12,11 @@ before_action :move_to_index, except: [:index, :show]
   def new
     @purchases = UserCards.new
   end
+
   def create
     @purchases = UserCards.new(purchases_params)
     @item = Item.find(params[:item_id])
 
-  
     if @purchases.valid?
 
       pay_item
@@ -37,10 +36,8 @@ before_action :move_to_index, except: [:index, :show]
   private
 
   def purchases_params
-
     params.permit(:postal_code, :shipping_area_id, :city, :address_number, :building,
                   :phone, :token, :item_id).merge(user_id: current_user.id)
-
   end
 
   def set_purchases
@@ -57,19 +54,15 @@ before_action :move_to_index, except: [:index, :show]
   end
 
   def pay_item
-
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: purchases_params[:token],
       currency: 'jpy'
-
     )
   end
 
   def move_to_index
     redirect_to action: :index unless user_signed_in?
-
   end
 end
-
