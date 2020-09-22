@@ -1,7 +1,10 @@
 require 'rails_helper'
-
-
-
+RSpec.describe Item, type: :model do
+  describe '商品情報を入力' do
+    before do
+      @user = FactoryBot.create(:user)
+      @item = FactoryBot.build(:item)
+    end
     it '必須項目を入力し、商品情報を入力ができる' do
       expect(@item).to be_valid
     end
