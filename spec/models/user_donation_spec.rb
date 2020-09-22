@@ -1,9 +1,5 @@
 require 'rails_helper'
-
 RSpec.describe UserDonation, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
-
-  RSpec.describe UserDonation, type: :model do
     describe '寄付情報の保存' do
       before do
         @user_donation = FactoryBot.build(:user_donation)
