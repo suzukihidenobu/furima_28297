@@ -14,36 +14,43 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Image can't be blank")
     end
     it '商品名が必須である' do
+
       @item.name = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Name can't be blank")
     end
     it '商品の説明が必須である' do
+
       @item.item_info = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Item info can't be blank")
     end
     it 'カテゴリーの情報が必須である' do
+
       @item.category_name_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Category name can't be blank")
     end
     it '商品の状態についての情報が必須である' do
+
       @item.condition_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Condition can't be blank")
     end
     it '配送料の負担についての情報が必須である' do
+
       @item.delivery_burden_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Delivery burden can't be blank")
     end
     it '発送元の地域についての情報が必須である' do
+
       @item.shipping_area_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Shipping area can't be blank")
     end
     it '発送までの日数についての情報が必須である' do
+
       @item.shipping_days_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Shipping days can't be blank")

@@ -8,7 +8,6 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
       const imageElement = document.createElement('div')
       imageElement.setAttribute('id', "image-element")
       let imageElementNum = document.querySelectorAll('#image-element').length
-
       const blobImage = document.createElement('img')
       blobImage.setAttribute('src', blob)
 
@@ -17,8 +16,6 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
       inputHTML.setAttribute('id', `purchases_image_${imageElementNum}`)
       inputHTML.setAttribute('name', 'purchases[images][]')
       inputHTML.setAttribute('type', 'file')
-
-
       imageElement.appendChild(blobImage)
       imageElement.appendChild(inputHTML)
       ImageList.appendChild(imageElement)
