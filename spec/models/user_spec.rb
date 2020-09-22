@@ -13,13 +13,13 @@ RSpec.describe User, type: :model do
     
 
     it "nicknameが6文字以下で登録できる" do
-      @user.nickname = "1234567"
+      @user.nickname = ""
       @user.valid?
       expect(@user.errors.full_messages).to include("Nickname is invalid. Input full-width characters.")
     end
 
     it 'メールアドレスが必須である'do
-      @user.email = "あああ"
+      @user.email = ""
       @user.valid?
       expect(@user.errors.full_messages).to include("Email is invalid")
     end
