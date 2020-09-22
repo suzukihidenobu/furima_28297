@@ -1,6 +1,4 @@
 class ShippingArea < ActiveHash::Base
-  # カラムをgenre_idにする理由は、ジャンルのidをarticlesテーブルに保存するためです。
-  # そうすることで、idに紐付いているジャンルの情報を取得できます。
   self.data = [
     { id: 0, name: '---' }, { id: 1, name: '北海道' }, { id: 2, name: '青森県' },
     { id: 3, name: '岩手県' }, { id: 4, name: '宮城県' }, { id: 5, name: '秋田県' },
@@ -20,8 +18,3 @@ class ShippingArea < ActiveHash::Base
     { id: 45, name: '宮崎県' }, { id: 46, name: '鹿児島県' }, { id: 47, name: '沖縄県' }
   ]
 end
-
-# ActiveHash::Base
-# ActiveHash::Baseは、ActiveRecordと同様のメソッドが使用できるようになります。
-# ActiveHash::Baseを継承することで、Genreモデルに定義した
-# オブジェクトに対してActiveRecordのメソッドが使用できるようになります。

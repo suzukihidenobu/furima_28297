@@ -39,7 +39,7 @@ Things you may want to cover:
 |category_name|integer|null:false|
 |condition|integer|null:false|
 |delivery_burden|integer|null:false|
-|shipping_area|integer|null:false|
+|shipping_area_id|integer|null:false|
 |shipping_days|integer|null:false|
 |user_id|integer|null:false , foreign_key:true|
 
@@ -101,7 +101,7 @@ Things you may want to cover:
 |category_name|integer|null:false|
 |condition|integer|null:false|
 |delivery_burden|integer|null:false|
-|shipping_area|integer|null:false|
+|shipping_area_id|integer|null:false|
 |shipping_days|integer|null:false|
 |user_id|integer|null:false , foreign_key:true|
 
