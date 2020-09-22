@@ -1,28 +1,21 @@
 class PurchasesController < ApplicationController
-  # before_action :set_item, only: [:edit, :show]
+  before_action :set_purchases, only: [:edit, :show]
   before_action :move_to_index, except: [:index, :show]
-  # before_action :set_purchases, only: [:index, :show]
+  before_action :set_item, only: [:index]
   def index
+    redirect_to root_path if !@item.purchase.nil? || @item.user == current_user
     @purchases = UserCards.new
-    @item = Item.find(params[:item_id])
   end
-  # 出品者であるAさんが直接購入ページ（http://localhost:3000/items/5/dealings）を入力すると、トップページに遷移する
-  # つまり、自分で出品した商品は買えなくしている↓
-  # redirect_to root_url if !set_item.dealing.nil? || current_user.id == set_item.user_id
-  # @puchases = UserPurchases.new
 
   def new
     @purchases = UserCards.new
   end
 
   def create
-    # @purchases = UserCards.new(purchases: purchases_params[:postal_code, :shipping_area, :city, :es, :building, :phone, :commit, :item_id])
     @purchases = UserCards.new(purchases_params)
     @item = Item.find(params[:item_id])
-    # binding.pry
-    if @purchases.valid?
 
-      # binding.pry
+    if @purchases.valid?
 
       pay_item
       @purchases.save
@@ -32,46 +25,42 @@ class PurchasesController < ApplicationController
     end
   end
 
-   private
+  def exit
+  end
+
+  def show
+  end
+
+  private
 
   def purchases_params
-    params.permit(:postal_code, :shipping_area, :city, :address_number, :building,
-                  :shipping_area, :phone, :token, :item_id).merge(user_id: current_user.id)
+    params.permit(:postal_code, :_id, :city, :address_number, :building,
+                  :shipping_area_id, :phone, :token, :item_id).merge(user_id: current_user.id)
   end
 
   def set_purchases
     @purchases = Purchases.find(params[:id])
-   end
+  end
+
+  def item_params
+    params.require(:item).permit(:image, :name, :price, :item_info, :category_name_id, :condition_id,
+                                 :delivery_burden_id, :shipping_area_id, :shipping_days_id).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
 
   def pay_item
-    Payjp.api_key = 'sk_test_3aa9bc13a3833dee213f87e6' # PAY.JPテスト秘密鍵
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
-      amount: @item.price, # 商品の値段
-      card: purchases_params[:token], # カードトークン
-      currency: 'jpy' # 通貨の種類(日本円)
+      amount: @item.price,
+      card: purchases_params[:token],
+      currency: 'jpy'
     )
- end
+  end
 
   def move_to_index
     redirect_to action: :index unless user_signed_in?
- end
- end
-
-# Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # PAY.JPのメソッドを利用するためには、環境変数を読み込む
-#     customer = Payjp::Customer.create(  #顧客に紐づいているカードの情報を生成しましょう。（8~10行目）
-#     description: 'test', # テストカードであることを説明
-#     :purchases params[:purchases_token] # 登録しようとしているカード情報
-#     )
-
-#     purchases = Purchases.new( # トークン化されたカード情報を保存する
-#       purchases_token: params[:purchases_token], # カードトークン
-#       customer_token: customer.id, # 顧客トークン
-#       user_id: current_user.id # ログインしているユーザー
-#     )
-#     #  具体的なカード情報（カード番号など）をデータベースに保存することは法律上禁止されていますが、
-# # トークン化された情報であれば保存可能です
-#     if purchases.save
-#       redirect_to root_path
-#     else
-#       redirect_to "new" # カード登録画面、カードの登録後はトップページにリダイレクトされるようにしました。
-#     end
+  end
+end
