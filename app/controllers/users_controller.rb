@@ -5,7 +5,7 @@ class UsersController < ApplicationController
    redirect_to new_purchase_path and return unless purchases.present? 
    customer = Payjp::Customer.retrieve(purchases.customer_token) 
    @purchases = customer.purchases.first 
-   user = User.find(params[:id]
+   user = User.find(params[:id])
     @nickname = current_user.nickname
     @items = current_user.items
   end
