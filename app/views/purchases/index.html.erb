@@ -65,7 +65,7 @@
         <%= f.text_field "card-cvc",class:"input-default", id:"card-cvc", placeholder:"カード背面4桁もしくは3桁の番号", maxlength:"4" %>
       </div>
     </div>
-  
+
     <div class='shipping-es-form'>
       <h1 class='info-input-haedline'>
         配送先入力
@@ -83,12 +83,9 @@
           <span class="indispensable">必須</span>
         </div>
         
-         <%= f.collection_select( :shipping_area, ShippingArea.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
+         <%= f.collection_select( :shipping_area_id, ShippingArea.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
         </div>
-    
-    
-      
-      </div>
+        </div>
       <div class="form-group">
         <div class='form-text-wrap'>
           <label class="form-text">市区町村</label>
