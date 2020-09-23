@@ -1,7 +1,9 @@
 class PurchasesController < ApplicationController
+  before_action :move_to_index, except: [:index, :show]
   before_action :set_purchases, only: [:edit, :show]
   before_action :move_to_index, except: [:index, :show]
   before_action :set_item, only: [:index]
+
   def index
     redirect_to root_path if !@item.purchase.nil? || @item.user == current_user
     @purchases = UserCards.new
@@ -34,8 +36,8 @@ class PurchasesController < ApplicationController
   private
 
   def purchases_params
-    params.permit(:postal_code, :_id, :city, :address_number, :building,
-                  :shipping_area_id, :phone, :token, :item_id).merge(user_id: current_user.id)
+    params.permit(:postal_code, :shipping_area_id, :city, :address_number, :building,
+                  :phone, :token, :item_id).merge(user_id: current_user.id)
   end
 
   def set_purchases
