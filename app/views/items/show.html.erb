@@ -4,8 +4,14 @@
 <div class="item-show">
   <div class="item-box">
     <h2 class="name">
-      <%= "商品名" %>
-    </h2>
+      <%# <%= "商品名" %> 
+
+        <tr>
+           <th class="detail-item"></th> 
+          <td class="detail-value"><%= @item.name %></td>
+        </tr>
+  
+  </h2>
     <div class='item-img-content'>
       <%= image_tag @item.image ,class:"item-box-img" %>
       <% if @item.purchase.present?%>
