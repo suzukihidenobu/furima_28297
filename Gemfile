@@ -83,3 +83,4 @@ gem 'image_processing', '~> 1.2'
 gem 'payjp' #PAY.JPの機能を使えるようにgemを導入しました。
 
 gem 'factory_bot_rails' #テストで使うGemを導入
+gem "aws-sdk-s3", require: false
